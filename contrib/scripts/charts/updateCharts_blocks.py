@@ -15,12 +15,12 @@ isTestnet = True
 
 # RPC CREDS
 rpc_user = "rpc"
-rpc_pass = "pivxrpc"
+rpc_pass = "flitsrpc"
 rpc_host = "127.0.0.1"
 rpc_port = "18049" if isTestnet else "8049"
 rpc_url = "http://%s:%s@%s" % (rpc_user, rpc_pass, rpc_host)
-bb_url = "https://testnet" if isTestnet else "https://explorer"
-bb_url += ".pivx.link"
+bb_url = "https://testnet" if isTestnet else "https://blockbook"
+bb_url += ".flitswallet.app"
 
 # FILENAME
 supply_data_file = os.path.join("/opt/coins/blockbook/plot_data", "supply_data.json")
