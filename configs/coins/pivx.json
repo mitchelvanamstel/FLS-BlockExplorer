@@ -1,36 +1,36 @@
 {
   "coin": {
-    "name": "PIVX",
-    "shortcut": "PIVX",
-    "label": "PIVX",
-    "alias": "pivx"
+    "name": "Flits",
+    "shortcut": "FLS",
+    "label": "FLS",
+    "alias": "fls"
   },
   "ports": {
-    "backend_rpc": 8049,
+    "backend_rpc": 12271,
     "backend_message_queue": 38349,
     "blockbook_internal": 9049,
-    "blockbook_public": 9149
+    "blockbook_public": 80
   },
   "ipc": {
     "rpc_url_template": "http://127.0.0.1:{{.Ports.BackendRPC}}",
     "rpc_user": "rpc",
-    "rpc_pass": "pivxrpc",
+    "rpc_pass": "flitsrpc",
     "rpc_timeout": 25,
     "message_queue_binding_template": "tcp://127.0.0.1:{{.Ports.BackendMessageQueue}}"
   },
   "backend": {
     "package_name": "backend-pivx",
     "package_revision": "satoshilabs-1",
-    "system_user": "pivx",
-    "version": "3.2.1",
-    "binary_url": "https://github.com/PIVX-Project/PIVX/releases/download/v3.2.1/pivx-3.2.1-x86_64-linux-gnu.tar.gz",
+    "system_user": "flits",
+    "version": "2.0.0",
+    "binary_url": "https://github.com/flitsnode/flits-core/releases/download/2.0.0/fls-2.0.0-x86_64-linux-gnu.tar.gz",
     "verification_type": "sha256",
-    "verification_source": "876388dbb3a8a4af440fd7ed0beef00e7798a8a0a09a9209dfa8d49c39434c1d",
+    "verification_source": "dce11f30e508cf4d9cd6e30df1864c7da4b6681debfa55910da0ebb95d11f91f",
     "extract_command": "tar -C backend --strip 1 -xf",
     "exclude_files": [
-      "bin/pivx-qt"
+      "bin/flits-qt"
     ],
-    "exec_command_template": "{{.Env.BackendInstallPath}}/{{.Coin.Alias}}/bin/pivxd -datadir={{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend -conf={{.Env.BackendInstallPath}}/{{.Coin.Alias}}/{{.Coin.Alias}}.conf -pid=/run/{{.Coin.Alias}}/{{.Coin.Alias}}.pid",
+    "exec_command_template": "{{.Env.BackendInstallPath}}/{{.Coin.Alias}}/bin/flitsd -datadir={{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend -conf={{.Env.BackendInstallPath}}/{{.Coin.Alias}}/{{.Coin.Alias}}.conf -pid=/run/{{.Coin.Alias}}/{{.Coin.Alias}}.pid",
     "logrotate_files_template": "{{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend/*.log",
     "postinst_script_template": "",
     "service_type": "forking",
@@ -45,7 +45,7 @@
   },
   "blockbook": {
     "package_name": "blockbook-pivx",
-    "system_user": "blockbook-pivx",
+    "system_user": "blockbook-flits",
     "internal_binding_template": ":{{.Ports.BlockbookInternal}}",
     "public_binding_template": ":{{.Ports.BlockbookPublic}}",
     "explorer_url": "",
